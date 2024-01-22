@@ -27,31 +27,16 @@ import CAdwaita
 //   return sideBarContainer
 // }
 
-func NavigationButton(icon: Libadwaita.Icon, onClicked: @escaping (Gtk.ButtonRef)->Void) -> Gtk.Button {
-  let btn = Gtk.Button()
-  let image = Gtk.Image()
-
-  btn.setHexpand(expand: true)
-  image.set(iconSize: .normal)
-  
-  CGtk.gtk_image_set_from_icon_name(image.ptr.toUInt64().toPointer(), icon.string)
-  CGtk.gtk_button_set_child(btn.ptr.toUInt64().toPointer(), image.ptr.toUInt64().toPointer())
-
-  btn.onClicked(handler: onClicked)
-
-  return btn
-}
-
 class SideBar : Libadwaita.NativeWidgetPeer {
   private let container = Gtk.Box(orientation: .vertical, spacing: 0)
   private let headerBar = Libadwaita.HeaderBar().valign(.center).hexpand(true)
   private let urlBar = Gtk.Entry()
 
-  private let backBtn = NavigationButton(icon: .custom(name: "go-previous-symbolic")) { (btn: Gtk.ButtonRef) -> Void in
+  private let backBtn = CrescentButton(icon: .custom(name: "go-previous-symbolic")) { (btn: Gtk.ButtonRef) -> Void in
     print("Back")
   }
 
-  private let forwardBtn = NavigationButton(icon: .custom(name: "go-next-symbolic")) { (btn: Gtk.ButtonRef) -> Void in
+  private let forwardBtn = CrescentButton(icon: .custom(name: "go-next-symbolic")) { (btn: Gtk.ButtonRef) -> Void in
     print("Forward")
   }
 
