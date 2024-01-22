@@ -1,0 +1,28 @@
+{
+  "configurations": [
+    {
+      "type": "lldb",
+      "request": "launch",
+      "sourceLanguages": [
+        "swift"
+      ],
+      "args": [],
+      "cwd": "${workspaceFolder:crescent-swift}",
+      "name": "Debug crescent-swift",
+      "program": "${workspaceFolder:crescent-swift}/.build/debug/crescent-swift",
+      "preLaunchTask": "swift: Build Debug crescent-swift"
+    },
+    {
+      "type": "lldb",
+      "request": "launch",
+      "sourceLanguages": [
+        "swift"
+      ],
+      "args": [],
+      "cwd": "${workspaceFolder:crescent-swift}",
+      "name": "Release crescent-swift",
+      "program": "${workspaceFolder:crescent-swift}/.build/release/crescent-swift",
+      "preLaunchTask": "swift: Build Release crescent-swift"
+    }
+  ]
+}
